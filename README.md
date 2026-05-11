@@ -1,12 +1,49 @@
-# Generateur-d-images-et-d-animations
-Il s'agit d'un projet python + flask + React d'une application permettant la génération d'images et d'animations à partir d'un prompt 
+# Mon Application React + Flask + Turtle
 
-Pour faire marcher l'application, suivez les étapes suivantes:
- 1- ouvrez le dossier contenant tout le projet dans votre éditeur de texte.
- 2- ouvrez un terminal dans ce dossier
- 3- déplacez-vous vers dans le dossier "backend" grâce à la commande "cd backend" (powershell)
- 4- ensuite tapez la commande : "python app.py"
- 5- ouvrez un nouveau terminal sans fermer le terminal actuel
- 6- déplacez-vous vers dans le dossier "frontend" grâce à la commande "cd frontend" (powershell)
- 7- tapez ensuite la commande : "npm run dev"
- 8- enfin ouvrez votre navigateur et saisissez l'URL indiqué dans le terminal frontend pour accéder au localhost de votre application ex: http://localhost:5173/ 
+## Structure du projet
+
+```
+projet/
+├── backend/
+│   ├── app.py           ← Flask (API)
+│   ├── phrase.py        ← Générateur Markov (inchangé)
+│   ├── dessin.py        ← Turtle (inchangé)
+│   ├── requirements.txt
+│   └── poemes.txt       ← à placer ici
+└── frontend/
+    ├── src/
+    │   ├── App.jsx      ← Interface React
+    │   └── main.jsx
+    ├── index.html
+    ├── package.json
+    └── vite.config.js
+```
+
+## Lancement
+
+### 1. Backend Flask (terminal 1)
+
+```bash
+cd backend
+pip install -r requirements.txt
+python app.py
+```
+
+→ Flask tourne sur http://localhost:5000
+
+### 2. Frontend React (terminal 2)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+→ React tourne sur http://localhost:5173
+
+## Comment ça fonctionne
+
+- React envoie des requêtes HTTP vers Flask (`fetch`)
+- Flask appelle `Creer_Phrase()` ou `dessiner_forme()` en Python
+- Turtle s'ouvre dans une **fenêtre séparée** sur votre machine
+- `flask-cors` autorise la communication entre les deux serveurs
